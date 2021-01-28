@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from point import Point
 from point import normalize_angle
+import angles
 
 
 def main():
@@ -21,6 +22,14 @@ def main():
     print(f'length = {length}')
     print(f'azimuth = {azimuth}')
 
+    print(angles.deg2grad(315))
+    print(angles.decimal_deg2dms_deg(1.0169722222222222))
+    dms = angles.decimal_deg2dms_deg(1.0169722222222222)
+    print(type(dms))
+    print(angles.dms_deg2decimal_deg([1, 1, 1.1]))
+    print(int(2.851))
+    print(type(angles.deg2grad(90)))
 
 if __name__ == '__main__':
     main()
+

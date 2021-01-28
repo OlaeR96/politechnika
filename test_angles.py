@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from angles import deg2grad, grad2deg
+from angles import deg2grad, grad2deg, dms_deg2decimal_deg
 from angles import grad2rad, rad2grad
 from angles import decimal_deg2rad, rad2decimal_deg
 from angles import decimal_deg2dms_deg
@@ -15,7 +15,7 @@ def test_deg2grad():
     assert deg2grad(180) == 200
     assert deg2grad(225) == 250
     assert deg2grad(270) == 300
-    assert deg2grad(315) == 340
+    assert deg2grad(315) == 350
     assert deg2grad(360) == 400
 
 
@@ -23,11 +23,11 @@ def test_grad2deg():
     assert grad2deg(0) == 0
     assert grad2deg(50) == 45
     assert grad2deg(100) == 90
-    assert grad2deg(150) == 130
+    assert grad2deg(150) == 135 #blad 150g == 135
     assert grad2deg(200) == 180
     assert grad2deg(250) == 225
     assert grad2deg(300) == 270
-    assert grad2deg(340) == 315
+    assert grad2deg(350) == 315 #blad analogiczny do 18 liniki
     assert grad2deg(400) == 360
 
 
@@ -85,5 +85,7 @@ def test_decimal_deg2dms_deg():
 
 
 def test_dms_deg2decimal_deg():
+    assert dms_deg2decimal_deg([1, 1, 0]) == 1.0166666666666666
+    assert dms_deg2decimal_deg([1, 1, 1.1]) == 1.0169722222222222
     # correct for 5
     pass
